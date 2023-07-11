@@ -1,0 +1,30 @@
+@startuml
+!include include/iterator.puml
+package java.util {
+  
+  interface Queue<E> extends Collection
+  abstract AbstractQueue<E> extends AbstractCollection implements Queue
+  class PriorityQueue<E> extends AbstractQueue {
+    Priority Heap
+  }
+  interface Deque<E> extends Queue, SequencedCollection
+  class ArrayDeque<E> extends AbstractCollection implements Deque
+  
+  interface ListIterator<E> extends Iterator
+  interface RandomAccess
+  interface List<E> extends SequencedCollection
+  List .u.> ListIterator: creates
+  abstract AbstractList<E> extends AbstractCollection implements List
+  AbstractList .r.> RandomAccess: relates to
+    ' Somehow `r` works but `l` doesn’t
+  
+  class ArrayList<E> extends AbstractList implements RandomAccess
+  class Vector<E> <<obsolete>> <<synchronized>> extends AbstractList implements RandomAccess
+  Vector .r.> ArrayList: superseded by
+  class Stack<E> <<obsolete>> <<synchronized>> extends Vector
+  Stack .u.> ArrayDeque: superseded by
+  abstract AbstractSequentialList<E> extends AbstractList
+  class LinkedList<E> extends AbstractSequentialList implements Deque
+  
+}
+@enduml
