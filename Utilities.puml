@@ -1,36 +1,30 @@
 @startuml
-!include include.puml
+!include include/iterator.puml
 package java {
   
   package lang {
-    interface Iterable<T>
     interface Comparable<T>
   }
   package util {
     interface Comparator<T>
-    Comparator .u. Comparable
-    
+    Comparator .u. Comparable: alternatives
     interface Enumeration<E> <<obsolete>>
-    Enumeration .u.> java.lang.Iterable
-    interface Iterator<E>
-    Iterator <.u. Iterable 
+    Enumeration .u.> java.lang.Iterable: superseded by
     
     interface Spliterator<T>
-    Spliterator <.l. Collection 
+    Spliterator <.r. Collection: creates
     metaclass Spliterators
-    Spliterators <.u. Spliterator
-    
-    interface Collection extends java.lang.Iterable
+    Spliterators <.d. Spliterator: utilities
     
     interface Map<K,V>
     metaclass Collections
-    Collections <.d. Collection
-    Collections <.d. Map
+    Collections <.d. Collection: utilities
+    Collections <.d. Map: utilities
     
     interface SortedMap<K,V> extends Map
-    SortedMap .u.> Comparator
+    SortedMap .u.> Comparator: depends on
     interface SortedSet<E> extends SequencedCollection
-    SortedSet .u.> Comparator
+    SortedSet .u.> Comparator: depends on
     
     metaclass Arrays
     
