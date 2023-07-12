@@ -3,6 +3,10 @@
 !include include/collection.puml
 package java.util {
   
+  skinparam class {
+    BorderColor<<obsolete>> red
+  }
+  
   interface Enumeration<E> <<obsolete>>
   Enumeration .u.> java.lang.Iterable: superseded by
   

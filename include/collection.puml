@@ -1,9 +1,9 @@
 @startuml
 package java.util {
   
-  interface Collection<E>
-  abstract AbstractCollection<E> implements Collection
-  interface SequencedCollection<E> <<New!>> extends Collection
+  interface Collection<E> ##blue
+  abstract AbstractCollection<E> ##blue implements Collection
+  interface SequencedCollection<E> <<New!>> ##blue extends Collection
   
 }
 @enduml
