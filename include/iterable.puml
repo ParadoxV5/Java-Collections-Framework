@@ -1,0 +1,8 @@
+@startuml
+package java {
+  
+  interface lang.Iterable<T>
+  interface util.Collection<E> extends lang.Iterable
+  
+}
+@enduml

@@ -1,15 +1,9 @@
 @startuml
-!include collection.puml
-package java {
+!include iterable.puml
+package java.util {
   
-  package lang {
-    interface Iterable<T>
-    interface java.util.Collection extends Iterable
-  }
-  package util {
-    interface Iterator<E>
-    Iterator <.u. Iterable: creates
-  }
+  interface Iterator<E>
+  Iterator <.u. Iterable: creates
   
 }
 

@@ -8,11 +8,9 @@ package java {
   package util {
     interface Comparator<T>
     Comparator .u. Comparable: alternatives
-    interface Enumeration<E> <<obsolete>>
-    Enumeration .u.> java.lang.Iterable: superseded by
     
     interface Spliterator<T>
-    Spliterator <.r. Collection: creates
+    Spliterator <.l. Collection: creates
     metaclass Spliterators
     Spliterators <.d. Spliterator: utilities
     
@@ -22,11 +20,11 @@ package java {
     Collections <.d. Map: utilities
     
     interface SortedMap<K,V> extends Map
-    SortedMap .u.> Comparator: depends on
-    interface SortedSet<E> extends SequencedCollection
-    SortedSet .u.> Comparator: depends on
+    SortedMap -l-> Comparator
+    interface SortedSet<E> extends Collection
+    SortedSet -u-> Comparator
     
-    metaclass Arrays
+    'metaclass Arrays
     
   }
 }

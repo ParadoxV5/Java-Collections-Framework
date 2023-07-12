@@ -1,0 +1,30 @@
+@startuml
+!include include/iterable.puml
+!include include/collection.puml
+package java.util {
+  
+  interface Enumeration<E> <<obsolete>>
+  Enumeration .u.> java.lang.Iterable: superseded by
+  
+  interface List<E> extends SequencedCollection
+  abstract AbstractList<E> extends AbstractCollection implements List
+  class ArrayList<E> extends AbstractList implements RandomAccess
+  class Vector<E> <<obsolete>> <<synchronized>> extends AbstractList implements RandomAccess
+  Vector .l.> ArrayList: superseded by
+  
+  interface Deque<E> extends SequencedCollection
+  class ArrayDeque<E> extends AbstractCollection implements Deque
+  class Stack<E> <<obsolete>> <<synchronized>> extends Vector
+  Stack .u.> ArrayDeque: superseded by
+  
+  interface Map<K,V>
+  abstract Dictionary<K,V> <<obsolete>>
+  Dictionary .l.> Map : superseded by
+  
+  abstract AbstractMap<K,V> implements Map
+  class HashMap<K,V> extends AbstractMap
+  class Hashtable<K,V> <<obsolete>> <<synchronized>> extends Dictionary implements Map
+  Hashtable .d.> HashMap : superseded by
+  
+}
+@enduml
