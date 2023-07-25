@@ -1,0 +1,8 @@
+@startuml
+package java.util {
+  
+  interface List<E> extends SequencedCollection
+  interface RandomAccess
+  
+}
+@enduml

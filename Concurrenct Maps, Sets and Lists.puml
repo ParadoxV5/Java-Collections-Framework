@@ -1,0 +1,28 @@
+@startuml
+!include include/map-set.puml
+!include include/.list-randomaccess.puml
+
+package java.util {
+  
+    interface NavigableMap<K,V> extends Map
+    interface NavigableSet<E> extends SequencedCollection, Set
+  
+  package concurrent {
+    diamond CloneableSerializable implements java.lang.Cloneable, java.io.Serializable
+    
+    interface ConcurrentMap<K,V> extends java.util.Map
+    class ConcurrentHashMap<K,V> extends java.util.AbstractMap implements ConcurrentMap, java.io.Serializable
+    interface ConcurrentNavigableMap<K,V> extends ConcurrentMap, java.util.NavigableMap
+    class ConcurrentSkipListMap<K,V> extends java.util.AbstractMap, CloneableSerializable implements ConcurrentNavigableMap
+    
+    class ConcurrentSkipListSet<E> extends java.util.AbstractSet, CloneableSerializable implements java.util.NavigableSet
+    ConcurrentSkipListSet *-u- ConcurrentSkipListMap
+    
+    class CopyOnWriteArrayList<E> extends CloneableSerializable implements java.util.List, java.util.RandomAccess
+    class CopyOnWriteArraySet<E> extends java.util.AbstractSet implements java.io.Serializable
+    CopyOnWriteArraySet *-u- CopyOnWriteArrayList
+    
+  }
+}
+
+@enduml

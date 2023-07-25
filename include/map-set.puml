@@ -1,0 +1,14 @@
+@startuml
+!include collection.puml
+package java.util {
+  
+  together {
+    interface Map<K,V>
+    interface Set<E> extends Collection
+  }
+  
+  abstract AbstractMap<K,V> implements Map
+  abstract AbstractSet<E> extends AbstractCollection implements Set
+  
+}
+@enduml

@@ -1,12 +1,8 @@
 @startuml
-!include include/collection.puml
+!include include/map-set.puml
 package java.util {
   
   ' Directly-corresponding interfaces
-  together {
-    interface Map<K,V>
-    interface Set<E> extends Collection
-  }
   together {
     interface SequencedMap<K,V> extends Map
     interface SequencedSet<E> extends SequencedCollection, Set
@@ -20,7 +16,7 @@ package java.util {
     interface NavigableSet<E> extends SortedSet
   }
   
-  abstract AbstractMap<K,V> implements Map
+  ' Maps
   class EnumMap<K extends Enum<K>,V> extends AbstractMap
   class IdentityHashMap<K,V> <<reference-equality>> extends AbstractMap
   class WeakHashMap<K,V> extends AbstractMap
@@ -29,8 +25,8 @@ package java.util {
   class TreeMap<K,V> extends AbstractMap implements NavigableMap {
     Red-Black Tree
   }
-    
-  abstract AbstractSet<E> extends AbstractCollection implements Set
+  
+  ' Sets
   abstract EnumSet<E extends Enum<E>> <<sealed>> extends AbstractSet {
     Bit Flags
   }

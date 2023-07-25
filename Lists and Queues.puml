@@ -1,6 +1,7 @@
 @startuml
 !include include/iterator.puml
 !include include/queue.puml
+!include include/.list-randomaccess.puml
 package java.util {
   
   class PriorityQueue<E> extends AbstractQueue {
@@ -9,10 +10,8 @@ package java.util {
   class ArrayDeque<E> extends AbstractCollection implements Deque
   
   interface ListIterator<E> extends Iterator
-  interface RandomAccess
+  ListIterator <.d. List: creates
   
-  interface List<E> extends SequencedCollection
-  List .u.> ListIterator: creates
   abstract AbstractList<E> extends AbstractCollection implements List
   AbstractList .r.> RandomAccess: relates to
     ' Somehow `r` works but `l` doesn’t
