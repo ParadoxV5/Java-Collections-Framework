@@ -1,0 +1,25 @@
+@startuml
+!include include/queue.puml
+package java.util.concurrent {
+  
+  diamond SerializableQueue<E> extends java.util.AbstractQueue implements java.io.Serializable
+  class ConcurrentLinkedQueue<E> extends SerializableQueue
+  
+  interface BlockingQueue<E> extends java.util.Queue
+  class DelayQueue<E extends Delayed> extends java.util.AbstractQueue implements BlockingQueue
+  
+  diamond SerializableBlockingQueue extends SerializableQueue implements BlockingQueue
+  class SynchronousQueue<E> extends SerializableBlockingQueue
+  class ArrayBlockingQueue<E> extends SerializableBlockingQueue
+  class PriorityBlockingQueue<E> extends SerializableBlockingQueue {
+    Priority Heap
+  }
+  class LinkedBlockingQueue<E> extends SerializableBlockingQueue
+  
+  interface BlockingDeque<E> extends BlockingQueue, java.util.Deque
+  class LinkedBlockingDeque<E> extends SerializableQueue implements BlockingDeque
+  interface TransferQueue<E> extends BlockingQueue
+  class LinkedTransferQueue<E> extends SerializableQueue implements TransferQueue
+  
+}
+@enduml

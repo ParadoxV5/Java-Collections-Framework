@@ -1,14 +1,11 @@
 @startuml
 !include include/iterator.puml
-!include include/collection.puml
+!include include/queue.puml
 package java.util {
   
-  interface Queue<E> extends Collection
-  abstract AbstractQueue<E> extends AbstractCollection implements Queue
   class PriorityQueue<E> extends AbstractQueue {
     Priority Heap
   }
-  interface Deque<E> extends Queue, SequencedCollection
   class ArrayDeque<E> extends AbstractCollection implements Deque
   
   interface ListIterator<E> extends Iterator
